@@ -1,7 +1,7 @@
 import openai
 from openai import OpenAI
 
-openai.api_key = 'enter your api key here'
+openai.api_key = 'enter your own api key here'
 
 def load_context_from_file(file_path):
     messages = []
