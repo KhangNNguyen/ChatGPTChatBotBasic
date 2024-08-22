@@ -1,10 +1,10 @@
 import discord
 import handleresponses
 
-async def send_messages(message, user_message, is_private):
+async def send_messages(message, user_message):
     try:
         response = handleresponses.handle_response(user_message)
-        await message.author.send(response) if is_private else await message.channel.send(response)
+        await message.reply(response, mention_author=True )
     except Exception as e:
         print(e)
 
@@ -31,9 +31,9 @@ def run_discord_bot():
 
         if user_message[0] == '?':
             user_message = user_message[1:]
-            await send_messages(message, user_message, is_private=True)
+            await send_messages(message, user_message)
         else:
-            await send_messages(message, user_message, is_private=False)
+            await send_messages(message, user_message)
 
     client.run(TOKEN)
 
