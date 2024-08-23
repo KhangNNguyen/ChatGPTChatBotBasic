@@ -9,8 +9,15 @@ async def send_messages(message, user_message):
     except Exception as e:
         print(e)
 
+def load_token(file_path):
+    token = ''
+    with open(file_path, 'r') as file:
+        for line in file:
+            token = line
+    return token
+
 def run_discord_bot():
-    TOKEN = 'enter token here'
+    TOKEN = load_token("discordbottoken.txt")
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)

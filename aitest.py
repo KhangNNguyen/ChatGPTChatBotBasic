@@ -1,7 +1,14 @@
 import openai
 from openai import OpenAI
 
-openai.api_key = 'enter your own api key here'
+def load_gpt_key(file_path):
+    key = ''
+    with open(file_path, 'r') as file:
+        for line in file:
+            key = line
+    return key
+
+openai.api_key = load_gpt_key("chatgptkey.txt")
 
 def load_context_from_file(file_path):
     messages = []
