@@ -4,7 +4,8 @@ import handleresponses
 async def send_messages(message, user_message):
     try:
         response = handleresponses.handle_response(user_message)
-        await message.reply(response, mention_author=True )
+        for x in response:
+            await message.reply(x, mention_author=True )
     except Exception as e:
         print(e)
 
