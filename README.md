@@ -1,4 +1,10 @@
-This is a test of OpenAI API usage. I wanted to see how to create a chatbot within python. 
+TO INSTALL: 
+Create venv then 
+pip install -r requirements.txt
+
+Don't even need to create a venv because there is not a lot to this install.
+
+This is a test of OpenAI API usage. I wanted to see how to create a chatbot within Python. 
 I've implemented a prompt to allow it to be used as an AI Club Chatbot
 
 8/22/2024
