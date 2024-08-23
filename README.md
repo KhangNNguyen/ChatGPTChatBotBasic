@@ -9,7 +9,7 @@ Added capability for 2000+ character responses on discord chat (multiple message
 8/21/2024:
 
 Added discord bot functionality
+Added prompts so that the bot thinks it is an AI Club Assistant Bot.
 
 Future updates:
-- Add prompts to have it be more niche
 - Create a front end via streamlit
