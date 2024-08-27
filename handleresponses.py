@@ -5,6 +5,8 @@ def handle_response(message) -> str:
     context_message = aitest.load_context_from_file(context_file)
     if message == "!owllife":
         return ("https://owllife.kennesaw.edu/organization/ai_club")
+    elif message == "!help":
+        return ("!owllife : sends link to register for the AI club")
     else:
         response = aitest.chat_with_gpt(message, context_message)
         if len(response) > 2000:
