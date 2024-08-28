@@ -42,14 +42,13 @@ class Member:
                     return student
         
     def json_format(self) -> dict:
-        return {self.name:
-                {"id": str(self._id),
+        return  {"id": str(self._id),
                 "name": self.name,
                 "bio": self.bio,
                 "linkedin": self.linkedin,
                 "avatar": str(self.avatar),
                 "join_date": str(self.join_date),
-                "profile_color": str(self.profile_color)}}
+                "profile_color": str(self.profile_color)}
         
         
                 

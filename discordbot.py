@@ -71,7 +71,7 @@ def run_discord_bot():
         user_json = open("users.json", "r")
         users = json.load(user_json)
         
-        if ctx.author.display_name in users.keys():
+        if ctx.author.display_name.lower() in users.keys():
             await ctx.send(f"Student Profile: **{ctx.author.display_name}** has already been created!")
 
         else:
@@ -81,8 +81,9 @@ def run_discord_bot():
                     ctx.author.joined_at,
                     ctx.author.color)
             
+            users[member.name.lower()] = member.json_format()
             user_json = open("users.json", "w")
-            json.dump(member.json_format(), user_json, indent=3)
+            json.dump(users, user_json, indent=3)
             user_json.close()
             
             await ctx.send(f"Student Profile: **{member.name}** has been created!")
@@ -91,36 +92,38 @@ def run_discord_bot():
                     description="returns the user's profile",
                     aliases=["p"],
                     help="returns the user's profile or show the profile of another user")
-    async def profile(ctx, member: discord.Member=None):
+    async def profile(ctx, member:str=None):
         
         user_json = open("users.json", "r")
         users = json.load(user_json)
+        try:
         
-        
-        if member is None:
-            member_details = users[ctx.author.display_name]
-            
-        else:
+            if member is None:
+                member_details = users[ctx.author.display_name.lower()]
                 
-            member_details = users[member]
-        
-        member_details["id"] = int(member_details["id"])
-        member_details["join_date"] = parser.parse(member_details["join_date"])
-        member_details["profile_color"] = discord.Colour.from_str(member_details["profile_color"])
-        
-        member = Member(**member_details)
-        
-        profile_embed = discord.Embed(
-            color=member.profile_color,
-            title="Profile",
-            description=f"""
->>> 📖 **Bio**: {member.bio}
-🗓️ **Join Date**: {member.join_date.strftime("%m/%d/%Y")}
-**LinkedIn**: {member.linkedin}
-            """)
+            else:    
+                member_details = users[member.lower()]
 
-        profile_embed.set_author(name=member.name, icon_url=member.avatar)       
-        await ctx.send(embed=profile_embed)
+            member_details["id"] = int(member_details["id"])
+            member_details["join_date"] = parser.parse(member_details["join_date"])
+            member_details["profile_color"] = discord.Colour.from_str(member_details["profile_color"])
+            
+            member = Member(**member_details)
+            
+            profile_embed = discord.Embed(
+                color=member.profile_color,
+                title="Profile",
+                description=f"""
+    >>> 📖 **Bio**: {member.bio}
+    🗓️ **Join Date**: {member.join_date.strftime("%m/%d/%Y")}
+    **LinkedIn**: {member.linkedin}
+                """)
+
+            profile_embed.set_author(name=member.name, icon_url=member.avatar)       
+            await ctx.send(embed=profile_embed)
+        
+        except:
+            await ctx.send("Use `!c` or `!create` to create your profile!")
     
     @client.command(name="set", 
                     description="returns the user's profile",
@@ -131,10 +134,9 @@ def run_discord_bot():
         with open("users.json", "r") as user_json:
             users = json.load(user_json)
         
-        member_details = users[ctx.author.display_name]
+        member_details = users[ctx.author.display_name.lower()]
         profile_tag_change = ""
         
-        print(profile_tag, info)
         if profile_tag.lower() in ("biography", "bio", "b"):
             profile_tag_change = "Bio"
             member_details["bio"] = info
@@ -142,9 +144,9 @@ def run_discord_bot():
         elif profile_tag.lower() in ("linkedin", "link", "l"):
             profile_tag_change = "LinkedIn"
             member_details["linkedin"] = info
-        
+    
         with open("users.json", "w") as user_json:
-            json.dump({member_details["name"]: member_details}, user_json, indent=3)
+            json.dump(users, user_json, indent=3)
             user_json.close()
         
         await ctx.send(f"Your profile **{profile_tag_change}** has been changed!")

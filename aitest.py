@@ -9,7 +9,7 @@ def load_gpt_key(file_path):
     # print(key)
     return key
 
-openai.api_key = load_gpt_key("chatgptkey.txt")
+openai.api_key = load_gpt_key("tokens/chatgptkey.txt")
 
 def load_context_from_file(file_path):
     messages = []
