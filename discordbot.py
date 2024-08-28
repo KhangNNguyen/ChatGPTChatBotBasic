@@ -203,11 +203,11 @@ def run_discord_bot():
         response = chat_with_gpt(user_input, context_message)
         if len(response) > 2000:
             out = [(response[i:i+1900]) for i in range (0,len(response), 1900)]
-            await ctx.reply(out)
+            for part in out:
+                await ctx.reply(part)
             #return ("The response is greater than 2000 characters (discord limit) please revise your prompt to limit the response to under 2000 characters. :nerd: ")
         else:
-            out = [response]
-            await ctx.reply(out)
+            await ctx.reply(response)
         
     client.run(TOKEN)
 
