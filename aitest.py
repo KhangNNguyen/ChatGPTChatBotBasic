@@ -6,6 +6,7 @@ def load_gpt_key(file_path):
     with open(file_path, 'r') as file:
         for line in file:
             key = line
+    # print(key)
     return key
 
 openai.api_key = load_gpt_key("chatgptkey.txt")
