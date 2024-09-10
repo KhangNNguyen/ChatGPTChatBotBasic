@@ -11,6 +11,7 @@ from dateutil import parser
 import re
 import json
 
+from rss import RSSparser
 
 # async def send_messages(message, user_message):
 #     try:
@@ -87,6 +88,7 @@ def run_discord_bot():
             user_json.close()
             
             await ctx.send(f"Student Profile: **{member.name}** has been created!")
+
     
     @client.command(name="profile", 
                     description="returns the user's profile",
@@ -157,8 +159,27 @@ def run_discord_bot():
                     description="gives the link to the owllife website",
                     aliases=["owl"],
                     help="gives the link to the owllife website")
-    async def owllife(ctx):
-        await ctx.reply("https://owllife.kennesaw.edu/organization/ai_club")
+
+    # this is bad practice but whatever
+    async def owllife(ctx, *, user_input:str):
+        r = RSSparser()
+        r.scrape()
+        events = ""
+        r.to_string(events)
+        context_file = "prompt.txt"
+        context_message = load_context_from_file(context_file) + events + "\Provided above is a list of future events scraped from KSU's OwlLife club page. Answer whatever the user asks about these events. Use cases are things like 'what are some events that match my interest in x and y', and then provide 5 or so events that match 5 or so events that match 5 or so events that match 5 or so events that match 5 or so events that match the date, name of the event, and the link. If they didn't ask about upcoming events, tell them that they should submit queries about KSU events using !events and nothing else. format outputs using discord embeds"
+        
+        response = chat_with_gpt(user_input, context_message)
+        if len(response) > 2000:
+            out = [(response[i:i+1900]) for i in range (0,len(response), 1900)]
+            for part in out:
+                await ctx.reply(part)
+            #return ("The response is greater than 2000 characters (discord limit) please revise your prompt to limit the response to under 2000 characters. :nerd: ")
+        else:
+            await ctx.reply(response)
+
+
+        
     
     @client.command(name="events", 
                     description="returns the next upcoming event for ksu ai club",
@@ -208,7 +229,7 @@ def run_discord_bot():
             #return ("The response is greater than 2000 characters (discord limit) please revise your prompt to limit the response to under 2000 characters. :nerd: ")
         else:
             await ctx.reply(response)
-        
+
     client.run(TOKEN)
 
 
