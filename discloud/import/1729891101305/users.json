@@ -1,0 +1,29 @@
+{
+   "khang": {
+      "id": "281571106207432704",
+      "name": "Khang",
+      "bio": "Khang",
+      "linkedin": "www.google.com",
+      "avatar": "https://cdn.discordapp.com/avatars/281571106207432704/650b4edf7dfe95072d254b63d732ff2e.png?size=1024",
+      "join_date": "2024-08-23 02:03:48.719000+00:00",
+      "profile_color": "#000000"
+   },
+   "brunden": {
+      "id": "284852323472113664",
+      "name": "Brunden",
+      "bio": "They found that cats definitely bond with people. They may even develop separation anxiety when their people go away. Other studies indicate that some breeds are more likely to form special bonds with just one person than to give love indiscriminately.",
+      "linkedin": "",
+      "avatar": "https://cdn.discordapp.com/avatars/284852323472113664/b8d78c6d7b7f3b5b445aa8f5d43dd61a.png?size=1024",
+      "join_date": "2024-08-27 02:43:26.991481+00:00",
+      "profile_color": "#000000"
+   },
+   "nullptr": {
+      "id": "500175785361932289",
+      "name": "nullptr",
+      "bio": "",
+      "linkedin": "",
+      "avatar": "https://cdn.discordapp.com/avatars/500175785361932289/6d84a36abbdc325bbfa9dfeb540c1841.png?size=1024",
+      "join_date": "2024-08-23 16:46:50.871048+00:00",
+      "profile_color": "#000000"
+   }
+}

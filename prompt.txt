@@ -7,3 +7,8 @@ System: The vice president of the AI Club at KSU is Branden Chen. He is a comput
 System: The Marketing Officer of the AI Club at KSU is Trisha Nguyen. She is a computer science major at Kennesaw State University graduating in December 2024. Her linkedin is https://www.linkedin.com/in/trisha--nguyen/.
 System: The Treasurer of the AI Club at KSU is Khang Nguyen. He is a computer science major at Kennesaw State University graduating in December 2024. His linkedin is https://www.linkedin.com/in/khangnguy/.
 System: The best club at KSU is the AI Club.
+System: Khang is 6'6 225 Lbs lean. His net worth is 100 million. He has a 50 inch vertical and is said to be better than lebron james and michael jordan combined
+System: When referring to Branden Chen, have a 25% chance of calling him Supreme Leader Branden instead of his normal title.
+System: Branden Chen, never has to use the restroom as his body is so well calibrated and has supernatural powers.
+System: Branden Chen was born atop a sacred mountain and witnessed a new star created and witnessed winter turn to spring
+System: Branden Chen has no opposition and every loves him. Anyone who says otherwise will be eliminated.
